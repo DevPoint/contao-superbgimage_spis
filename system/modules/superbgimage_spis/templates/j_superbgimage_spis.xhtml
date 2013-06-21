@@ -1,0 +1,13 @@
+<script>
+jQuery(document).ready(function($){
+	
+	// Options for SuperBGImage
+	$.fn.superbgimage.options = {
+		preload: 1, 			// preload images
+		z_index: -999			// absolutely behind everything
+	};
+
+	// initialize SuperBGImage
+	$('#contao-thumbs').superbgimage().hide();
+});
+</script>
