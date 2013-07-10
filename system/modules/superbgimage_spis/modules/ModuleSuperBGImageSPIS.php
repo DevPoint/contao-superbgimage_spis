@@ -39,7 +39,8 @@ class ModuleSuperBGImageSPIS extends SimplePageImages {
      */
     protected function compile() 
     {
-        $this->Template->images = $this->findPageImages(false);
+        $recursive = ($this->simplepageimages_recursive) ? true : false;
+        $this->Template->images = $this->findPageImages($recursive);
         if (null !== $this->Template->images)
         {
             $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/superbgimage_spis/assets/js/jquery.superbgimage.min.js|static';
