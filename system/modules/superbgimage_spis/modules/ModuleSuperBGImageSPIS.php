@@ -40,10 +40,25 @@ class ModuleSuperBGImageSPIS extends SimplePageImages {
     protected function compile() 
     {
         $recursive = ($this->simplepageimages_recursive) ? true : false;
-        $this->Template->images = $this->findPageImages($recursive);
-        if (null !== $this->Template->images)
+		$arrImages = $this->findPageImages($recursive);
+        if (null !== $arrImages && !empty($arrImages))
         {
+			$this->Template->images = array();
+			foreach($arrImages as $item)
+			{
+				$objCell = new \stdClass();
+				$imgSize = getimagesize(TL_ROOT .'/'. $item['singleSRC']);
+				$item['size'] = $this->imgSize;
+				$item['fullsize'] = false;
+				$item['imagemargin'] = false;
+				$this->addImageToTemplate($objCell, $item, $imgSize[0]);
+				$this->Template->images[] = $objCell;
+			}
             $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/superbgimage_spis/assets/js/jquery.superbgimage.min.js|static';
+        }
+        else
+        {
+            $this->Template->images = null;
         }
     }
 }
