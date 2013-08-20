@@ -26,6 +26,6 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'mod_superbgimage_spis'			=> 'system/modules/superbgimage_spis/templates',
-	'js_superbgimage_spis'			=> 'system/modules/superbgimage_spis/templates'
+	'mod_superbgimage_spis'		=> 'system/modules/superbgimage_spis/templates',
+	'js_superbgimage_spis'		=> 'system/modules/superbgimage_spis/templates'
 ));

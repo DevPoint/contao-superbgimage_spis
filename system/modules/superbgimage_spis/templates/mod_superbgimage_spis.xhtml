@@ -1,7 +1,7 @@
 <?php if (null !== $this->images): ?>
-<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?>>
-<?php foreach($this->images as $arrImage) : ?>
-<a href="<?php echo $arrImage['src']; ?>" title="<?php echo $arrImage['title']; ?>"></a>
+<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?>">
+<?php foreach($this->images as $item) : ?>
+<a href="<?php echo $item->src; ?>" title="<?php echo $item->title; ?>"></a>
 <?php endforeach;?>
 </div>
 <?php endif;?>

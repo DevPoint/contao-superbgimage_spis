@@ -43,22 +43,23 @@ class ModuleSuperBGImageSPIS extends SimplePageImages {
 		$arrImages = $this->findPageImages($recursive);
         if (null !== $arrImages && !empty($arrImages))
         {
-			$this->Template->images = array();
-			foreach($arrImages as $item)
+            $templateImages = array();
+			foreach ($arrImages as $item)
 			{
-				$objCell = new \stdClass();
 				$imgSize = getimagesize(TL_ROOT .'/'. $item['singleSRC']);
 				$item['size'] = $this->imgSize;
 				$item['fullsize'] = false;
 				$item['imagemargin'] = false;
-				$this->addImageToTemplate($objCell, $item, $imgSize[0]);
-				$this->Template->images[] = $objCell;
+                $objTemplate = new \stdClass();
+				$this->addImageToTemplate($objTemplate, $item, $imgSize[0]);
+				$templateImages[] = $objTemplate;
 			}
+            $this->Template->images = $templateImages;
             $GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/superbgimage_spis/assets/js/jquery.superbgimage.min.js|static';
         }
         else
         {
-            $this->Template->images = null;
+            $this->Template->body = null;
         }
     }
 }
